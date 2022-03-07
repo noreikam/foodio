@@ -37,9 +37,15 @@
                     </Header>
 
                     <!-- Search bar -->
-                    <div class=" px-0 py-3">
-                        <input id="searchText" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Search..." name="search">
+                    <div id="navBar" class=" px-0 py-3">
+                        <!-- <input id="searchText" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Search..." name="search"> -->
+
+                        <select id="citySelect" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Select City" name="city">
+                            <option value="" disabled selected>Select a city</option>
+                        </select>
+
                         <button id="searchBtn" class="box-shadow py-1 px-4 my-4 bg-green-600 rounded-full hover:bg-green-300 hover:text-black" type="submit">Find My Food!</button>
+
                     </div>
 
                     <!-- Nav -->
@@ -66,14 +72,46 @@
             <div class="flex flex-wrap">
 
                 <!-- Info Section -->
-                <section class="card my-auto mx-auto p-10 text-2xl border-4 border-green-800 order-3">
-                    <div class="">
-                        <h2 class="font-bold">Resturaunt Name Goes Here</h2>
+                <section id='restCard' class="card my-auto mx-auto p-10 text-2xl border-4 border-green-800 order-3">
+                    <!-- Select a restaurant from the results to view details! -->
+                    <div class="flex">
+                        <div>
+                            <h1>
+                                Max a Mia Ristorante
+                            </h1>
+                            <img src='https://media-cdn.tripadvisor.com/media/photo-f/0e/78/d5/a9/dining-area.jpg'>
+                            </img>
+                            <h3>Pizza</h3>
+                        </div>
+                        <div>
+                            <h3>62-100 Mauna Kea Beach Drive, Avon, CT</h3>
+                            <div>
+                                <a href="http://maxrestaurantgroup.com/amia">
+                                Restaurant Website             
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.tripadvisor.com/Restaurant_Review-g29154-d417798-Reviews-Max_a_Mia_Ristorante-Avon_Connecticut.html">
+                                Reviews
+                                </a>
+                            </div>
+                            <h3>
+                                Price Range: $21 - $30
+                            </h3>
+                            <h3>
+                                Rating: 3.8/4
+                            </h3>
+                            <h3>
+                                ⭐2020 Certificate of Excellence
+                            </h3>
+                        </div>
                     </div>
                     <div>
-                        <p class="text-base">This will contain the information from the api, a brief description of the resturaunt, popular menu items, etc</p>
+                        <p>Max A Mia is the quintessential Italian experience in the Greater Hartford area. Featuring a traditional Italian menu, Max A Mia also utilizes an authentic brick oven that produces stone pies with unmatched flavor.
+                    </p>
+
                     </div>
-                    </section>
+                </section>
 
                 <!-- Random Local -->
                 <section id = "randomBox" class="card my-auto mx-auto text-2xl flex-col justify-center border-4 border-green-800 order-2">
@@ -95,7 +133,7 @@
         </div>
 
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
         <script src='./assets/js/script.js'></script>
         <!-- <script src='./assets/js/script-lost-display.js'></script> -->
         
