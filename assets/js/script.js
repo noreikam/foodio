@@ -11,9 +11,7 @@ function getLocationId(event) {
     var locationId = "33804";
     const citySelected = document.querySelector('#citySelect');
     var cityArrIndex = citySelected.selectedIndex-1;
-    console.log(cityArr[cityArrIndex]);
     var citySelectedText=cityArr[cityArrIndex].cityText;
-    console.log(citySelectedText);
     
     locationId = cityArr[cityArrIndex].locationId;
     getRandomRest(locationId);
@@ -21,8 +19,6 @@ function getLocationId(event) {
 
 // function to fetch restaurant data from Worldwide Restaurants API hartford=33804 westHartford=33970
 function getRandomRest(locationId) {
-    console.log("testing log before fetch");
-    console.log("locationId: " + locationId);
     fetch("https://worldwide-restaurants.p.rapidapi.com/search?currency=USD&language=en_US&location_id=" + locationId + "&limit=1000", 
     {
 	"method": "POST",
@@ -59,7 +55,6 @@ function getRandomRest(locationId) {
             // add restaurant objects to array
             randRestArr.push(restObj);
             }
-            console.log(randRestArr[0]);
 
             // save array of restaurant objects to local storage
             localStorage.setItem("randRestArr", JSON.stringify(randRestArr));
@@ -70,6 +65,7 @@ function getRandomRest(locationId) {
 
   //function to display random restaurants 
   var displayRandRest = function() {
+    randomBox.innerHTML = "<div class='px-5 py-8 border-2 border-green-800'><h2 class='font-bold'>Local Restaurants</h2>";
     var randRestArr = JSON.parse(localStorage.getItem("randRestArr"));
     var maxDisplay = 5;
     if(randRestArr.length<maxDisplay) {
@@ -88,8 +84,6 @@ function getRandomRest(locationId) {
 
         // retrieve restaurant data
         var restName = randRestArr[randIndex].name;
-        // var restCuisine = randRestArr[randIndex].cuisine[0];
-        // console.log("cuisine: " + restCuisine);
         
         // create empty HTML 
         var restSnippet = document.createElement('p');
@@ -105,6 +99,11 @@ function getRandomRest(locationId) {
 
 // function to display restaurant details in page's hero section
 var displayRestCard = function(index) {
+    
+    console.log("displayRestCard()");
+    console.log(index);
+    console.log(restObj);
+
     var randRestArr = JSON.parse(localStorage.getItem("randRestArr"));
     var restObj = randRestArr[index];
     var imageURL = 'http://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
@@ -112,29 +111,22 @@ var displayRestCard = function(index) {
         console.log("has photo");
         imageURL = 'https://media-cdn.tripadvisor.com/media/photo-l/06/7f/6b/2a/lime-bar-grill.jpg';
     }
-    var priceRange = restObj.price;
-    if (priceRange==="") {
-        priceRange = "Unknown";
+    var priceRange = "Unknown";
+    if ('price' in restObj) {
+        priceRange = restObj.price;
     }
-
     var cuisine = "Unknown";
     if (restObj.cuisine.length > 0) {
         cuisine = restObj.cuisine[0].name;
     }
-
-    var rating = Math.round(10*restObj.raw_rating)/10;
-
+    var rating = Math.round(restObj.raw_ranking*10)/10;
     var award = "No awards";
     if (restObj.awards.length > 0) {
         award = restObj.awards[0].display_name;
     }
 
-    console.log("displayRestCard()");
-    console.log(index);
-    console.log(restObj);
-
     restCard.innerHTML = 
-        "<div class='flex'><div><h1>" + restObj.name + "</h1><img src='" + imageURL + "'</img><h5>Cuisine: " + cuisine + "</h5></div><div><h3>" + restObj.street + "</h3><h3>" + restObj.city + ", " + restObj.state + "<div><a href='" + restObj.trip_advisor_url + "'>Restaurant Website</a></div><div><a href='" + restObj.website_url + "'>Reviews</a></div><h3>Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "</h3><h3>" + award + "</h3></div></div><div><p>" + restObj.description + "</p></div>"
+        "<div class='flex'><div><h1>" + restObj.name + "</h1><img src='" + imageURL + "'</img><h5>Cuisine: " + cuisine + "</h5></div><div><h3>" + restObj.street + "</h3><h3>" + restObj.city + ", " + restObj.state + "<div><a href='" + restObj.trip_advisor_url + "'>Restaurant Website</a></div><div><a href='" + restObj.website_url + "'>Reviews</a></div><h3>Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "/4</h3><h3>" + award + "</h3></div></div><div><p>" + restObj.description + "</p></div>"
 }
 
 
