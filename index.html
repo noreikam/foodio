@@ -10,23 +10,40 @@
     <body class="font-sans text-black">
         
                 <!-- Mobile box -->
-        <div class="bg-green-800 text-green-400 flex justify-between md:hidden min-w-fit">
+        <div class="bg-green-800 text-green-400 flex flex-wrap justify-between md:hidden min-w-fit">
             <!-- Mobile Menu button bar -->
-            <a href="#" class="block p-4 text-white font-bold">Foodio</a>
+            
             <!-- Menu Button -->
-            <button class="mobile-menu-button p-4 focus:outline-none focus:bg-green-400">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+            <button class="mobile-menu-button p-4 m-auto focus:outline-none focus:bg-green-400">
+                <a href="#" class="text-2xl py-auto px-auto transition duration-300 text-white font-bold -order-2">Foodio</a>
             </button>
-                    
+             <!-- Search bar -->
+             <div id="navBar" class="mx-auto">
+                <!-- <input id="searchText" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Search..." name="search"> -->
+
+                <select id="citySelect" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Select City" name="city">
+                    <option value="" disabled selected>Select a city</option>
+                </select>
+
+                <button id="searchBtn" class="box-shadow py-1 px-4 my-4 bg-green-600 rounded-full hover:bg-green-300 hover:text-black" type="submit">Find My Food!</button>
+
+            </div>
+            <!-- <div>
+            <nav class="p-5 -order-1">
+                <div class="justify-center">
+                    <button id="favoriteButton" class="text-lg py-auto px-auto rounded transition duration-300 hover:bg-green-400 hover:text-black">
+                        ⭐Favorites
+                    </button>
+                </div> -->
+            </nav>
+            </div>        
         </div>
 
         <!-- Page Container -->
-        <div class="flex relative bg-green-300">
+        <div class="flex relative bg-green-300 overflow-auto">
 
             <!-- Sidebar Container -->
-            <div class="flex relative min-h-screen">
+            <div class="flex min-h-screen relative">
 
                 <!-- sidebar itself -->
                 <div class="sidebar box-shadow text-center bg-green-800 text-green-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-150 ease-in-out">
@@ -37,7 +54,7 @@
                     </Header>
 
                     <!-- Search bar -->
-                    <div id="navBar" class=" px-0 py-3">
+                    <div id="navBar" class="px-0 py-3">
                         <!-- <input id="searchText" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Search..." name="search"> -->
 
                         <select id="citySelect" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Select City" name="city">
@@ -56,9 +73,6 @@
                             </li>
                             <li id="recentButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
                                 🕰️Recent
-                            </li>
-                            <li id="localButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
-                                🚌Local
                             </li>
                         </div>
                     </nav>
@@ -128,8 +142,8 @@
                 </section>
 
                 <!-- Map -->
-                <section id="mapBox" class="card p-10 my-auto mx-auto text-2xl border-4 border-green-800 order-1">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d762843.2027070939!2d-72.7068416282373!3d41.680447651083014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e663e4428f4381%3A0xdb25a6a1eae0182!2sTaco%20Bell!5e0!3m2!1sen!2sus!4v1646081233396!5m2!1sen!2sus" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <section id="mapBox" class="card my-auto mx-auto text-2xl border-4 border-green-800 order-1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d762843.2027070939!2d-72.7068416282373!3d41.680447651083014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e663e4428f4381%3A0xdb25a6a1eae0182!2sTaco%20Bell!5e0!3m2!1sen!2sus!4v1646081233396!5m2!1sen!2sus" width="350" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </section>
             </div>
         </div>
