@@ -69,45 +69,47 @@
             </div>
             
             <!-- Content Container -->
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap max-h-screen">
 
                 <!-- Info Section -->
-                <section id='restCard' class="card my-auto mx-auto p-10 text-2xl border-4 border-green-800 order-3">
+                <section id='restCard' class="card justify-center my-auto mx-auto max-w-2xl text-2xl border-4 border-green-800 order-3">
                     <!-- Select a restaurant from the results to view details! -->
                     <div class="flex">
-                        <div>
-                            <h1>
+                        <div class="flex flex-wrap m-auto justify-center">
+                            <h1 class="font-extrabold py-1.5">
                                 Max a Mia Ristorante
                             </h1>
-                            <img src='https://media-cdn.tripadvisor.com/media/photo-f/0e/78/d5/a9/dining-area.jpg'>
+                            <img class="w-full border-4 border-green-800" src='https://media-cdn.tripadvisor.com/media/photo-f/0e/78/d5/a9/dining-area.jpg'>
                             </img>
-                            <h3>Pizza</h3>
+                            <h3 class="font-semibold py-1.5">Pizza</h3>
                         </div>
-                        <div>
+                        <div class="text-lg text-center py-1.5 px-1.5">
                             <h3>62-100 Mauna Kea Beach Drive, Avon, CT</h3>
-                            <div>
-                                <a href="http://maxrestaurantgroup.com/amia">
+                            <div class="py-1.5">
+                                <a class="text-green-700 visited:text-green-400 hover:text-green-900 underline" href="http://maxrestaurantgroup.com/amia">
                                 Restaurant Website             
                                 </a>
                             </div>
-                            <div>
-                                <a href="https://www.tripadvisor.com/Restaurant_Review-g29154-d417798-Reviews-Max_a_Mia_Ristorante-Avon_Connecticut.html">
+                            <div class="py-1.5">
+                                <a class="text-green-700 visited:text-green-400 hover:text-green-900 underline" href="https://www.tripadvisor.com/Restaurant_Review-g29154-d417798-Reviews-Max_a_Mia_Ristorante-Avon_Connecticut.html">
                                 Reviews
                                 </a>
                             </div>
-                            <h3>
-                                Price Range: $21 - $30
-                            </h3>
-                            <h3>
-                                Rating: 3.8/4
-                            </h3>
-                            <h3>
-                                ⭐2020 Certificate of Excellence
-                            </h3>
+                            <div class="py-1.5 font-bold">
+                                <h3>
+                                    Price Range: <span class="font-semibold underline">$21 - $30</span>
+                                </h3>
+                                <h3>
+                                    Rating: <span class="font-semibold underline">3.8/4</span>
+                                </h3>
+                                <h3>
+                                    ⭐2020 Certificate of Excellence
+                                </h3>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <p>Max A Mia is the quintessential Italian experience in the Greater Hartford area. Featuring a traditional Italian menu, Max A Mia also utilizes an authentic brick oven that produces stone pies with unmatched flavor.
+                    <div class="border-2 border-green-800 p-2">
+                        <p class="text-lg">Max A Mia is the quintessential Italian experience in the Greater Hartford area. Featuring a traditional Italian menu, Max A Mia also utilizes an authentic brick oven that produces stone pies with unmatched flavor.
                     </p>
 
                     </div>
@@ -119,9 +121,9 @@
                         <h2 class="font-bold">Select a city and click 'Find My Food!' to explore new local restaurants</h2>
                     </div>
                     <!-- <div  class="border-2 border-green-800">
-                            <!-- <li class="py-2 px-4 border-b-2 border-green-800">
+                            <li class="py-2 px-4 border-b-2 border-green-800">
                                 Result 1
-                            </li> -->
+                            </li>
                         </div> -->
                 </section>
 
@@ -137,7 +139,7 @@
         <script src='./assets/js/script.js'></script>
         <!-- <script src='./assets/js/script-lost-display.js'></script> -->
         
-        JS logic for the mobile menu button -->
+        <!-- JS logic for the mobile menu button -->
         <script src="./assets/js/sidebar-script.js"></script>
     </body>
 </html>
