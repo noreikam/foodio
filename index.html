@@ -48,10 +48,10 @@
                     <!-- Nav -->
                     <nav class="p-5">
                         <div class="content-center">
-                            <li id="favoriteButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
+                            <li id="favoriteBtn" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
                                 ⭐Favorites
                             </li>
-                            <li id="recentButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
+                            <li id="recentBtn" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
                                 🕰️Recent
                             </li>
                         </div>
@@ -71,9 +71,9 @@
                     <div class="flex">
                         <div class="flex flex-wrap m-auto justify-center">
                             <h1 class="font-extrabold py-1.5">
-                                Riley's Hot Dog & Burger Gourmet
+                                Restaurant Details Loading
                             </h1>
-                            <img class="w-full border-4 border-green-800" src='https://media-cdn.tripadvisor.com/media/photo-l/0d/13/16/7e/riley-s-hot-dog-burger.jpg'>
+                            <!-- <img class="w-full border-4 border-green-800" src='https://media-cdn.tripadvisor.com/media/photo-l/0d/13/16/7e/riley-s-hot-dog-burger.jpg'>
                             </img>
                             <h3 class="font-semibold py-1.5">Cuisine: American</h3>
                         </div>
@@ -100,20 +100,23 @@
                                 <h3>
                                     2018 Certificate of Excellence
                                 </h3>
+                                <button id='addFavorite' class = "box-shadow py-1 px-4 my-4 bg-green-300 rounded-full" type="submit">
+                                    Add Favorite
+                                </button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="border-2 border-green-800 p-2">
+                    <!-- <div class="border-2 border-green-800 p-2">
                         <p class="text-lg">MWelcome to Riley's. We are a gourmet hot dog and hamburger restaurant located in Downtown New Britain's Central Business District. We strive to use locally sourced meats, produce and ingredients when possible to create fresh and unique toppings, born from family recipes, bringing about an innovative and enjoyable dining experience for hot dog enthusiasts and hamburger connoisseurs alike. We proudly carry locally made products from New Britain's own Martin Rosol's Inc. and Avery's Beverages. We also offer a large selection of craft beer from both local and independent breweries from around the country. Who doesn't like to dine Al fresco? In the warmer weather, enjoy a cool drink on our patio while you wait for your food. Riley's established itself in 2010 with a hot dog cart on South Street in New Britain to rave reviews. Today we continue to push ourselves creatively to exceed your expectations and awaken your senses. Riley's Hot Dog & Burger Gourmet "All American.
                     </p>
 
-                    </div>
+                    </div> -->
                 </section>
 
-                <!-- Random Local -->
-                <section id = "randomBox" class="card my-auto mx-auto text-2xl flex-col justify-center border-4 border-green-800 order-2">
+                <!-- Random Local or favorites -->
+                <section id = "restList" class="card my-auto mx-auto text-2xl flex-col justify-center border-4 border-green-800 order-2">
                     <div class="px-5 py-8 border-2 border-green-800">
-                        <h2 class="font-bold">Select a city and click 'Find My Food!' to explore new local restaurants</h2>
+                        <h2 class="font-bold">Local Restaurants</h2>
                     </div>
                     <!-- <div  class="border-2 border-green-800">
                             <li class="py-2 px-4 border-b-2 border-green-800">
@@ -129,8 +132,11 @@
             </div>
         </div>
 
-        
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+        <!-- main script to load random restaurants, track favorites, react to button clicks -->
         <script src='./assets/js/script.js'></script>
         
         
