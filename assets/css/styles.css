@@ -8,8 +8,6 @@
       border-radius: theme('borderRadius.lg');
       padding: theme('spacing.6');
       box-shadow: theme('boxShadow.xl');
-    }
-    .box-shadow {
-        box-shadow: theme('boxShadow.xl');
-    }
+    };
+   
   }
