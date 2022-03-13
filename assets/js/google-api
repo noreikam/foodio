@@ -9,6 +9,8 @@ function initMap() {
       zoom: 17,
       mapId: "8d193001f940fde3",
     });
+  
+
     // Create the places service.
     const service = new google.maps.places.PlacesService(map);
     let getNextPage;

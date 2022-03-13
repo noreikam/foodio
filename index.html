@@ -131,12 +131,12 @@
                     <div id="container">
                         <div id="map"></div>
                         <div id="sidebar">
-                          <h2>Results</h2>
+                          <p><strong><a href="./assets/google_api/google-api.html">VIEW MAP HERE</a></strong></p>
                           <ul id="places"></ul>
                           <!--button id="more">Load more results</button-->
                           <div id="placeDetails"></div>
                         </div>
-                      </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -144,8 +144,10 @@
 
        
         <!-- Google maps API.  Async script executes immediately and must be after any DOM elements used in callback. -->
+        <script src = "assets/js/google-api"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD6G04UoUw6KUcH3bOH0raYoDfwSw-oM4&callback=initMap&libraries=places&v=weekly"
         async></script>
+        
 
         <!-- main script to load random restaurants, track favorites, react to button clicks -->
         <script src='./assets/js/script.js'></script>
