@@ -6,39 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodio</title>
     <link rel="stylesheet" href="./tailwind/output.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
     <body class="font-sans text-black">
         
                 <!-- Mobile box -->
         <div class="bg-green-800 text-green-400 flex flex-wrap justify-between md:hidden min-w-fit m-auto">
             <!-- Mobile Menu button bar -->
-            
+            <!-- <a href="#" class="block p-4 text-white font-bold">Foodio</a> -->
             <!-- Menu Button -->
             <button class="mobile-menu-button p-4 m-auto focus:outline-none focus:bg-green-400">
                 <a href="#" class="text-2xl py-auto px-auto transition duration-300 text-white font-bold -order-2">Foodio</a>
             </button>
-             <!-- Search bar -->
-             <div id="navBar" class="mx-auto">
-                <!-- <input id="searchText" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Search..." name="search"> -->
 
-                <select id="citySelect" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Select City" name="city">
-                    <option value="" disabled selected>Select a city</option>
-                </select>
-
-                <button id="searchBtn" class="box-shadow py-1 px-4 my-4 bg-green-600 rounded-full hover:bg-green-300 hover:text-black" type="submit">Find My Food!</button>
-
-            </div>
-            <!-- <div>
-            <nav class="p-5 -order-1">
-                <div class="justify-center">
-                    <button id="favoriteButton" class="text-lg py-auto px-auto rounded transition duration-300 hover:bg-green-400 hover:text-black">
-                        ⭐Favorites
-                    </button>
-                </div> -->
-            </nav>
-            </div>        
         </div>
-
+             
         <!-- Page Container -->
         <div class="flex bg-green-300 overflow-auto">
 
@@ -55,9 +37,8 @@
 
                     <!-- Search bar -->
                     <div id="navBar" class="px-0 py-3">
-                        <!-- <input id="searchText" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Search..." name="search"> -->
-
-                        <select id="citySelect" class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Select City" name="city">
+                        
+                        <select id="citySelect" class="selectClass border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Select City" name="city">
                             <option value="" disabled selected>Select a city</option>
                         </select>
 
@@ -68,11 +49,11 @@
                     <!-- Nav -->
                     <nav class="p-5">
                         <div class="content-center">
-                            <li id="favoriteButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
+                            <li id="favoriteBtn" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
                                 ⭐Favorites
                             </li>
-                            <li id="recentButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
-                                🕰️Recent
+                            <li id="recentBtn" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
+                                <a href="./assets/google_api/google-api.html">Map Results</a>
                             </li>
                         </div>
                     </nav>
@@ -86,72 +67,95 @@
             <div class="flex flex-wrap max-h-screen px-5 py-5">
 
                 <!-- Info Section -->
-                <section id='restCard' class="card my-auto mx-auto max-w-2xl text-2xl border-4 border-green-800 order-1">
+                <section id='restCard' class="card justify-center my-auto mx-auto max-w-2xl text-2xl border-4 border-green-800 order-1">
                     <!-- Select a restaurant from the results to view details! -->
                     <div class="flex">
                         <div class="flex flex-wrap m-auto justify-center">
                             <h1 class="font-extrabold py-1.5">
-                                Max a Mia Ristorante
+                                Restaurant Details Loading
                             </h1>
-                            <img class="w-full border-4 border-green-800" src='https://media-cdn.tripadvisor.com/media/photo-f/0e/78/d5/a9/dining-area.jpg'>
+                            <!-- <img class="w-full border-4 border-green-800" src='https://media-cdn.tripadvisor.com/media/photo-l/0d/13/16/7e/riley-s-hot-dog-burger.jpg'>
                             </img>
-                            <h3 class="font-semibold py-1.5">Pizza</h3>
+                            <h3 class="font-semibold py-1.5">Cuisine: American</h3>
                         </div>
                         <div class="text-lg text-center py-1.5 px-1.5">
-                            <h3>62-100 Mauna Kea Beach Drive, Avon, CT</h3>
+                            <h3>61 Glen St</h3>
+                            <h3>New Britain, CT</h3>
                             <div class="py-1.5">
-                                <a class="text-green-700 visited:text-green-400 hover:text-green-900 underline" href="http://maxrestaurantgroup.com/amia">
+                                <a class="text-green-700 visited:text-green-400 hover:text-green-900 underline" href="https://www.rileysgourmet.com/">
                                 Restaurant Website             
                                 </a>
                             </div>
                             <div class="py-1.5">
-                                <a class="text-green-700 visited:text-green-400 hover:text-green-900 underline" href="https://www.tripadvisor.com/Restaurant_Review-g29154-d417798-Reviews-Max_a_Mia_Ristorante-Avon_Connecticut.html">
+                                <a class="text-green-700 visited:text-green-400 hover:text-green-900 underline" href="https://www.yelp.com/biz/rileys-hot-dog-and-burger-gourmet-new-britain-4">
                                 Reviews
                                 </a>
                             </div>
                             <div class="py-1.5 font-bold">
                                 <h3>
-                                    Price Range: <span class="font-semibold underline">$21 - $30</span>
+                                    Price Range: <span class="font-semibold underline">$8 - $16</span>
                                 </h3>
                                 <h3>
                                     Rating: <span class="font-semibold underline">3.8/4</span>
                                 </h3>
                                 <h3>
-                                    ⭐2020 Certificate of Excellence
+                                    2018 Certificate of Excellence
                                 </h3>
+                                <button id='addFavorite' class = "box-shadow py-1 px-4 my-4 bg-green-300 rounded-full" type="submit">
+                                    Add Favorite
+                                </button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="border-2 border-green-800 p-2">
-                        <p class="text-lg">Max A Mia is the quintessential Italian experience in the Greater Hartford area. Featuring a traditional Italian menu, Max A Mia also utilizes an authentic brick oven that produces stone pies with unmatched flavor.
+                    <!-- <div class="border-2 border-green-800 p-2">
+                        <p class="text-lg">MWelcome to Riley's. We are a gourmet hot dog and hamburger restaurant located in Downtown New Britain's Central Business District. We strive to use locally sourced meats, produce and ingredients when possible to create fresh and unique toppings, born from family recipes, bringing about an innovative and enjoyable dining experience for hot dog enthusiasts and hamburger connoisseurs alike. We proudly carry locally made products from New Britain's own Martin Rosol's Inc. and Avery's Beverages. We also offer a large selection of craft beer from both local and independent breweries from around the country. Who doesn't like to dine Al fresco? In the warmer weather, enjoy a cool drink on our patio while you wait for your food. Riley's established itself in 2010 with a hot dog cart on South Street in New Britain to rave reviews. Today we continue to push ourselves creatively to exceed your expectations and awaken your senses. Riley's Hot Dog & Burger Gourmet "All American.
                     </p>
 
-                    </div>
+                    </div> -->
                 </section>
 
-                <!-- Random Local -->
-                <section id = "randomBox" class="card text-2xl m-auto border-4 border-green-800 order-3">
+                <!-- Random Local or favorites -->
+                <section id = "restList" class="card my-auto mx-auto text-2xl flex-col justify-center border-4 border-green-800 order-2">
                     <div class="px-5 py-8 border-2 border-green-800">
-                        <h2 class="font-bold">Select a city and click 'Find My Food!' to explore new local restaurants</h2>
+                        <h2 class="font-bold">Local Restaurants</h2>
                     </div>
-                    <!-- <div  class="border-2 border-green-800">
-                            <li class="py-2 px-4 border-b-2 border-green-800">
-                                Result 1
-                            </li>
-                        </div> -->
-                </section>
-
-                <!-- Map -->
-                <section id="mapBox" class="card my-auto mx-auto text-2xl border-4 border-green-800 order-2">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d762843.2027070939!2d-72.7068416282373!3d41.680447651083014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e663e4428f4381%3A0xdb25a6a1eae0182!2sTaco%20Bell!5e0!3m2!1sen!2sus!4v1646081233396!5m2!1sen!2sus" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </section>
             </div>
         </div>
 
-        
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <footer>
+            <div id="ukraineTop">
+                <h1>Ukraine Strong</h1>
+            </div>
+            <div id="ukraineBottom" class="flex flex-wrap">
+                <h3>Ways to Donate</h3>
+                <a  href="https://www.unicefusa.org/stories/unicef-children-crossfire-ukraine-crisis/39542?utm_campaign=20220225_Emergencies&utm_medium=Organic&utm_source=UkraineWebStoryChildrenFeb2022&utm_content=LearnMoreUkraineWebStoryChildrenFeb2022&ms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none&initialms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none">
+                    UNICEF
+                </a>
+                <a href="https://www.doctorswithoutborders.org/what-we-do/countries/ukraine">
+                    Doctors Without Borders
+                </a>
+                <a href="https://voices.org.ua/en/">
+                    Voices of Children
+                </a>
+                <a href="https://www.icrc.org/en/where-we-work/europe-central-asia/ukraine">
+                    International Red Cross
+                </a>
+                <a href="https://www.unrefugees.org/what-we-do/">
+                    UN Refugee Agency
+                </a>
+
+            </div>
+
+        </footer>
+
+
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+
+        <!-- main script to load random restaurants, track favorites, react to button clicks -->
         <script src='./assets/js/script.js'></script>
-        <!-- <script src='./assets/js/script-lost-display.js'></script> -->
+        
         
         <!-- JS logic for the mobile menu button -->
         <script src="./assets/js/sidebar-script.js"></script>
