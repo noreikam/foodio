@@ -7,11 +7,12 @@
     <title>Foodio</title>
     <link rel="stylesheet" href="./tailwind/output.css" />
     <script src = "assets/js/google-api"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
     <body class="font-sans text-black">
         
                 <!-- Mobile box -->
-        <div class="bg-green-800 text-green-400 flex flex-wrap justify-between md:hidden min-w-fit">
+        <div class="bg-green-800 text-green-400 flex flex-wrap justify-between md:hidden min-w-fit m-auto">
             <!-- Mobile Menu button bar -->
             <!-- <a href="#" class="block p-4 text-white font-bold">Foodio</a> -->
             <!-- Menu Button -->
@@ -22,7 +23,7 @@
         </div>
              
         <!-- Page Container -->
-        <div class="flex relative bg-green-300 overflow-auto">
+        <div class="flex bg-green-300 overflow-auto">
 
             <!-- Sidebar Container -->
             <div class="flex min-h-screen relative">
@@ -53,7 +54,7 @@
                                 ⭐Favorites
                             </li>
                             <li id="recentBtn" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
-                                🕰️Recent
+                                <a href="./assets/google_api/google-api.html">🌎Map Results</a>
                             </li>
                         </div>
                     </nav>
@@ -64,7 +65,7 @@
             </div>
             
             <!-- Content Container -->
-            <div class="flex flex-wrap max-h-screen">
+            <div id=restContent class="flex flex-wrap max-h-screen px-5 py-5 spacing-x-1.5">
 
                 <!-- Info Section -->
                 <section id='restCard' class="card justify-center my-auto mx-auto max-w-2xl text-2xl border-4 border-green-800 order-1">
@@ -119,27 +120,35 @@
                     <div class="px-5 py-8 border-2 border-green-800">
                         <h2 class="font-bold">Local Restaurants</h2>
                     </div>
-                    <!-- <div  class="border-2 border-green-800">
-                            <li class="py-2 px-4 border-b-2 border-green-800">
-                                Result 1
-                            </li>
-                        </div> -->
-                </section>
-
-                <!-- Map -->
-                <section id="mapBox" class="card my-auto mx-auto text-2xl border-4 border-green-800 order-3">
-                    <div id="container">
-                        <div id="map"></div>
-                        <div id="sidebar">
-                          <p><strong><a href="./assets/google_api/google-api.html">VIEW MAP HERE</a></strong></p>
-                          <ul id="places"></ul>
-                          <!--button id="more">Load more results</button-->
-                          <div id="placeDetails"></div>
-                        </div>
-                    </div>
                 </section>
             </div>
         </div>
+
+        <footer>
+            <div id="ukraineTop">
+                <h1>Ukraine Strong</h1>
+            </div>
+            <div id="ukraineBottom" class="flex flex-wrap">
+                <h3>Ways to Donate</h3>
+                <a  href="https://www.unicefusa.org/stories/unicef-children-crossfire-ukraine-crisis/39542?utm_campaign=20220225_Emergencies&utm_medium=Organic&utm_source=UkraineWebStoryChildrenFeb2022&utm_content=LearnMoreUkraineWebStoryChildrenFeb2022&ms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none&initialms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none">
+                    UNICEF
+                </a>
+                <a href="https://www.doctorswithoutborders.org/what-we-do/countries/ukraine">
+                    Doctors Without Borders
+                </a>
+                <a href="https://voices.org.ua/en/">
+                    Voices of Children
+                </a>
+                <a href="https://www.icrc.org/en/where-we-work/europe-central-asia/ukraine">
+                    International Red Cross
+                </a>
+                <a href="https://www.unrefugees.org/what-we-do/">
+                    UN Refugee Agency
+                </a>
+
+            </div>
+
+        </footer>
 
 
        
@@ -148,6 +157,8 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD6G04UoUw6KUcH3bOH0raYoDfwSw-oM4&callback=initMap&libraries=places&v=weekly"
         async></script>
         
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 
         <!-- main script to load random restaurants, track favorites, react to button clicks -->
         <script src='./assets/js/script.js'></script>

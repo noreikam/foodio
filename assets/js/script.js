@@ -8,7 +8,11 @@ var restCard = document.getElementById('restCard');
 var addFavoriteBtn = document.getElementById('addFavorite');
 var favoriteBtn = document.getElementById('favoriteBtn');
 var indexDisplayed;
+var displayed0 = document.getElementById('displayed0');
 var favIndex = 0;
+if(JSON.stringify(localStorage.favRestArr)) {
+    var favIndex = localStorage.favRestArr.length;
+}
 
 function getLocationId(event) {
     event.preventDefault();
@@ -76,6 +80,7 @@ function getRandomRest(locationId) {
         maxDisplay = randRestArr.length;
     }
     var randIndexArr = [];
+    var displayedArr = [];
 
     // choose random index
     for (var i=0; i<maxDisplay; i++){
@@ -88,18 +93,38 @@ function getRandomRest(locationId) {
 
         // retrieve restaurant data
         var restName = randRestArr[randIndex].name;
-        
-        // create empty HTML 
-        var restSnippet = document.createElement('p');
+        var displayedId = 'displayed' + i;
+        console.log(displayedId);
 
-        // append to random box
-        restList.appendChild(restSnippet);
+        var restSnippet = $("<p>").attr("id", displayedId)
+            .addClass("displayed py-2 px-4 border-b-2 border-green-800")
+            .text(restName);
+        $("#restList").append(restSnippet);
 
-        // add content to HTML 
-        restSnippet.outerHTML = "<p class='py-2 px-4 border-b-2 border-green-800'>" + restName + "</p>"; 
+        // store id to array of displayed restaurant indices
+        displayedArr.push({displayedId, randIndex});
     }
-    displayRestCard("randRestArr", randIndexArr[0]);    
-  }
+
+    localStorage.setItem("displayedArr", JSON.stringify(displayedArr));
+
+    displayRestCard("randRestArr", randIndexArr[0]);
+
+    $("#restList .displayed").click(function() {
+        console.log("Restaurant clicked");
+        var displayNext = $(this).attr('id');
+        console.log(displayNext);
+        console.log(displayedArr);
+        for (var i=0; i<displayedArr.length; i++) {
+            if (displayedArr[i].displayedId === displayNext) {
+                console.log("success");
+                console.log(displayedArr[i].randIndex);
+                displayRestCard("randRestArr", displayedArr[i].randIndex);
+            }
+        }
+    
+    });
+
+    }
 
 // function to display restaurant details in page's hero section
 var displayRestCard = function(arrayName, index) {
@@ -116,9 +141,7 @@ var displayRestCard = function(arrayName, index) {
     // assign restaurant details to local variables
     var imageURL = 'http://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
     if ('photo' in restObj) {
-        console.log("has photo");
         imageURL = restObj.photo.images.small.url;
-        console.log(imageURL);
     }
     var priceRange = "Unknown";
     if ('price' in restObj) {
@@ -135,7 +158,7 @@ var displayRestCard = function(arrayName, index) {
     }
     // use innerHTML to display restaurant details
     restCard.innerHTML = 
-        "<div class='flex'><div class='flex-column items-center justify-center flex-wrap m-auto'><h1 class='font-extrabold py-1.5'>" + restObj.name + "</h1><img class='w-full border-4 border-green-800' src='" + imageURL + "'</img><h3 class='font-semibold py-1.5'>Cuisine: " + cuisine + "</h3></div><div class='text-lg text-center py-1.5 px-1.5'><h3>" + restObj.street + "</h3><h3>" + restObj.city + ", " + restObj.state + "</h3><div class='py-1.5'><a class='text-green-700 visited:text-green-400 hover:text-green-900 underline' href='" + restObj.website_url + "'>Restaurant Website</a></div><div><a href='" + restObj.trip_advisor_url + "'>Reviews</a></div><h3>Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "/4</h3><h3>" + award + "</h3><button id='addFavorite' class = 'box-shadow py-1 px-4 my-4 bg-green-300 rounded-full' type='submit'>Add Favorite</button></div></div></div><div><p>" + restObj.description + "</p></div>";
+        "<div class='flex mx-8'><div class='flex flex-wrap m-auto justify-center'><h1 class='font-extrabold py-1.5'>" + restObj.name + "</h1><img class='w-full border-4 border-green-800' src='" + imageURL + "'</img><h3 class='font-semibold py-1.5'>Cuisine: " + cuisine + "</h3></div><div class='text-lg text-center py-1.5 px-1.5'><h3>" + restObj.street + "</h3><h3>" + restObj.city + ", " + restObj.state + "</h3><div class='py-1.5'><a class='text-green-700 visited:text-green-400 hover:text-green-900 underline' href='" + restObj.website_url + "'>Restaurant Website</a></div><div><a href='" + restObj.trip_advisor_url + "'>Reviews</a></div><h3>Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "/5</h3><h3>" + award + "</h3><button id='addFavorite' class = 'box-shadow py-1 px-4 my-4 bg-green-300 rounded-full' type='submit'>Add Favorite</button></div></div></div><div><p>" + restObj.description + "</p></div>";
 
         addFavoriteBtn = document.getElementById('addFavorite');
         addFavoriteBtn.addEventListener('click', addFavorite);
@@ -146,12 +169,17 @@ var addFavorite = function() {
     console.log("Add Favorite");
     var randRestArr = JSON.parse(localStorage.getItem("randRestArr"));
     var restObj = randRestArr[indexDisplayed];
+    
     console.log("restObj from addFavorite");
     console.log(restObj);
+    restObj.displayedId = "displayed" + favIndex;
+    console.log(restObj);
     var favRestArr;
+
     if(JSON.stringify(localStorage.favRestArr)){
-        console.log("exists");
         favRestArr = JSON.parse(localStorage.favRestArr);
+        console.log("favorites array exists");
+        console.log(favIndex);
     }
     else{ 
         console.log("does not exist");
@@ -165,7 +193,7 @@ var addFavorite = function() {
 
 }
 
-// display the favorites modal
+// display favorites 
 var displayFavorites = function() {
     console.log("clicked favorites");
 
@@ -178,21 +206,33 @@ var displayFavorites = function() {
     for (var i=0; i<favRestArr.length; i++){
         // retrieve restaurant data
         var restName = favRestArr[i].name;
+        var displayedId = 'displayed' + i;
+        console.log(displayedId);
         
-        // create empty HTML 
-        var restSnippet = document.createElement('p');
-
-        // append to restaurant list box
-        restList.appendChild(restSnippet);
-
-        // add content to HTML 
-        restSnippet.outerHTML = "<p id='restBtn' class=' py-2 px-4 border-b-2 border-green-800' type='submit'>" + restName + "</p>"; 
+        var restSnippet = $("<p>").attr("id", displayedId)
+            .addClass("displayed py-2 px-4 border-b-2 border-green-800")
+            .text(restName);
+        $("#restList").append(restSnippet);
     }
-    var restBtn = document.getElementById("restBtn");
-    restBtn.addEventListener("click", displayRestCard("favRestArr", 0));
 
+    $("#restList .displayed").click(function() {
+        console.log("Restaurant clicked");
+        var displayNext = $(this).attr('id');
+        console.log(displayNext);
+        console.log(favRestArr);
+        for (var i=0; i<favRestArr.length; i++) {
+            if (favRestArr[i].displayedId === displayNext) {
+                console.log("success");
+                console.log(favRestArr[i]);
+                displayRestCard("favRestArr", i);
+            }
+        }
     
-}
+    });
+        
+
+        
+    }
     
 
 
@@ -257,4 +297,3 @@ window.addEventListener("load", () => {
 
 searchBtn.addEventListener('click', getLocationId);
 favoriteBtn.addEventListener('click',displayFavorites);
-
