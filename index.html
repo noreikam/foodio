@@ -4,98 +4,120 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Foodio</title>
     <link rel="stylesheet" href="./tailwind/output.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
-    <body class="font-sans text-black max-h-screen">
-        <!-- Header -->
-        <!-- <header class="flex flex-row flex-wrap p-8 bg-green-300 min-w-screen">
-            <h1 class="self-start">Foodio</h1>
-            <nav>
-                <h2 class="self-end"><a href="#">Visit us on GitHub!</a></h2>
-            </nav>
-        </header> -->
+    <body class="font-sans text-black">
+        
+                <!-- Mobile box -->
+        <div class="bg-green-800 text-green-400 flex flex-wrap justify-between md:hidden min-w-fit m-auto">
+            <button class="mobile-menu-button p-4 m-auto focus:outline-none focus:bg-green-400">
+                <a href="#" class="text-2xl py-auto px-auto transition duration-300 text-white font-bold -order-2">Foodio</a>
+            </button>
+
+        </div>
+             
         <!-- Page Container -->
-        <div class="flex bg-green-300">
+        <div class="flex bg-green-300 overflow-auto">
+
             <!-- Sidebar Container -->
-            <div class="flex min-h-screen">
+            <div class="flex min-h-screen relative">
 
                 <!-- sidebar itself -->
-                <div class="box-shadow text-center bg-green-800 text-green-100 w-64 space-y-6 py-7 px-2 inset-y-0 left-0">
+                <div class="sidebar box-shadow text-center bg-green-800 text-green-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-150 ease-in-out">
                     <!-- Header -->
                     <Header class="box-shadow text-3xl font-extrabold m-5 text-white border-8 border-green-400 rounded-full p-1">
                         <h1 class="">Foodio</h1>
                         
                     </Header>
+
                     <!-- Search bar -->
-                    <div class=" px-0 py-3">
-                        <input class="border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Search..." name="search">
-                        <button class="box-shadow py-1 px-4 my-4 bg-green-600 rounded-full hover:bg-green-300 hover:text-black" type=submit">Find My Food!</button>
+                    <div id="navBar" class="px-0 py-3">
+                        
+                        <select id="citySelect" class="selectClass border-4 border-green-400 bg-green-300 rounded-full text-center focus:bg-green-200 focus:border-green-400 focus:text-black" type="text" placeholder="Select City" name="city">
+                            <option value="" disabled selected>Select a city</option>
+                        </select>
+
+                        <button id="searchBtn" class="box-shadow py-1 px-4 my-4 bg-green-600 rounded-full hover:bg-green-300 hover:text-black" type="submit">Find My Food!</button>
+
                     </div>
+
                     <!-- Nav -->
                     <nav class="p-5">
-                        <ul>
-                            <li id="favoriteButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
+                        <div class="content-center">
+                            <li id="favoriteBtn" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
                                 ⭐Favorites
                             </li>
-                            <li id="recentButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
-                                🕰️Recent
+                            <li id="recentBtn" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
+                                <a href="./assets/google_api/google-api.html">🌎Map Results</a>
                             </li>
-                            <li id="localButton" class="block text-2xl py-2.5 px-4 rounded transition duration-300 hover:bg-green-400 hover:text-black">
-                                🚌Local
-                            </li>
-                        </ul>
+                        </div>
                     </nav>
                     <div  class="block text-2xl py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-black">
-                        <a href="#" alt="link to github">Visit us on GitHub!</a>
+                        <a href="https://github.com/noreikam/foodio" alt="link to github">Visit us on GitHub!</a>
                     </div>
                 </div>
             </div>
             
             <!-- Content Container -->
-            <div class="flex flex-wrap-reverse">
+            <div id=restContent class="flex flex-wrap max-h-screen px-5 py-5 spacing-x-1.5 w-full">
+
                 <!-- Info Section -->
-                <section class="card my-auto mx-auto p-10 text-2xl border-4 border-green-800">
-                    <div class="">
-                        <h2 class="font-bold">Resturaunt Name Goes Here</h2>
-                    </div>
-                    <div>
-                        <p class="text-base">This will contain the information from the api, a brief description of the resturaunt, popular menu items, etc</p>
-                    </div>
-                    </section>
-
-                <!-- Random Local -->
-                <section class="card my-auto mx-auto text-2xl flex-col justify-center border-4 border-green-800">
-                    <div class="px-5 py-8">
-                        <h2 class="font-bold">Random Local Results</h2>
-                    </div>
-                    <div>
-                        <ul class="border-2 border-green-800">
-                            <li class="py-2 px-4 border-b-2 border-green-800">
-                                Result 1
-                            </li>
-                            <li class="py-2 px-4 border-b-2 border-green-800">
-                                Result 2
-                            </li>
-                            <li class="py-2 px-4 border-b-2 border-green-800">
-                                Result 3
-                            </li>
-                            <li class="py-2 px-4 border-b-2 border-green-800">
-                                Result 4
-                            </li>
-                            <li class="py-2 px-4 ">
-                                Result 5
-                            </li>
-                        </ul>
-                    </div>
+                <section id='restCard' class="card my-auto mx-1  max-w-2xl text-2xl border-4 border-green-800 order-1">
+                    <!-- Select a restaurant from the results to view details! -->
+                    <div class="flex">
+                        <div class="flex flex-wrap m-auto justify-center">
+                            <h1 class="font-extrabold py-1.5">
+                                Restaurant Details Loading
+                            </h1>
+                    </div>                    
                 </section>
 
-                <!-- Map -->
-                <section id="mapBox" class="card p-10 my-auto mx-auto text-2xl border-4 border-green-800">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d762843.2027070939!2d-72.7068416282373!3d41.680447651083014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e663e4428f4381%3A0xdb25a6a1eae0182!2sTaco%20Bell!5e0!3m2!1sen!2sus!4v1646081233396!5m2!1sen!2sus" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <!-- Random Local or favorites -->
+                <section id = "restList" class="card my-auto mx-auto text-2xl flex-col border-4 border-green-800 order-2">
+                    <div class="px-5 py-8 border-2 border-green-800">
+                        <h2 class="font-bold">Local Restaurants</h2>
+                    </div>
                 </section>
-                <!-- spicy hot comment for no push fix -->
             </div>
         </div>
+
+        <footer>
+            <div id="ukraineTop">
+                <h1>Ukraine Strong</h1>
+            </div>
+            <div id="ukraineBottom" class="flex flex-wrap">
+                <h3>Ways to Donate</h3>
+                <a  href="https://www.unicefusa.org/stories/unicef-children-crossfire-ukraine-crisis/39542?utm_campaign=20220225_Emergencies&utm_medium=Organic&utm_source=UkraineWebStoryChildrenFeb2022&utm_content=LearnMoreUkraineWebStoryChildrenFeb2022&ms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none&initialms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none">
+                    UNICEF
+                </a>
+                <a href="https://www.doctorswithoutborders.org/what-we-do/countries/ukraine">
+                    Doctors Without Borders
+                </a>
+                <a href="https://voices.org.ua/en/">
+                    Voices of Children
+                </a>
+                <a href="https://www.icrc.org/en/where-we-work/europe-central-asia/ukraine">
+                    International Red Cross
+                </a>
+                <a href="https://www.unrefugees.org/what-we-do/">
+                    UN Refugee Agency
+                </a>
+
+            </div>
+
+        </footer>
+
+
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+
+        <!-- main script to load random restaurants, track favorites, react to button clicks -->
+        <script src='./assets/js/script.js'></script>
+        
+        
+        <!-- JS logic for the mobile menu button -->
+        <script src="./assets/js/sidebar-script.js"></script>
     </body>
 </html>
