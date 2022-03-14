@@ -13,3 +13,28 @@
         box-shadow: theme('boxShadow.xl');
     }
   }
+
+#ukraineTop {
+  background-color: rgb(61, 61, 231);
+  padding: 16px;
+  color: white;
+}
+
+#ukraineTop h1 {
+  font-size: 36px;
+  font-weight:400;
+}
+
+#ukraineBottom {
+  background-color: yellow;
+  padding: 24px 20px;
+}
+
+#ukraineBottom a {
+  margin-left: 30px;
+  color: blue;
+  text-decoration: underline;
+}
+
+
+
