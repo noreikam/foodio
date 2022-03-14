@@ -8,25 +8,20 @@ var restCard = document.getElementById('restCard');
 var addFavoriteBtn = document.getElementById('addFavorite');
 var favoriteBtn = document.getElementById('favoriteBtn');
 var indexDisplayed;
-var displayed0 = document.getElementById('displayed0');
-var favIndex = 0;
-if(JSON.stringify(localStorage.favRestArr)) {
-    var favIndex = localStorage.favRestArr.length;
-}
+
 
 function getLocationId(event) {
     event.preventDefault();
-    var locationId = "33804";
     const citySelected = document.querySelector('#citySelect');
     var cityArrIndex = citySelected.selectedIndex-1;
-    var citySelectedText=cityArr[cityArrIndex].cityText;
     
-    locationId = cityArr[cityArrIndex].locationId;
+    var locationId = cityArr[cityArrIndex].locationId;
     getRandomRest(locationId);
 }
 
 // function to fetch restaurant data from Worldwide Restaurants API 
 function getRandomRest(locationId) {
+    // Worldwide Restaurants API fetch
     fetch("https://worldwide-restaurants.p.rapidapi.com/search?currency=USD&language=en_US&location_id=" + locationId + "&limit=1000", 
     {
 	"method": "POST",
@@ -41,7 +36,6 @@ function getRandomRest(locationId) {
     })
     .then(function (data) {
         var restArr = data.results.data;
-        console.log(restArr);
         var randRestArr = [];
         // create restaurant objects for local storage
         for (var i=0; i<restArr.length; i++) {
@@ -73,7 +67,9 @@ function getRandomRest(locationId) {
 
   //function to display random restaurants 
   var displayRandRest = function() {
+    // display list title
     restList.innerHTML = "<div class='px-5 py-8 border-2 border-green-800'><h2 class='font-bold'>Local Restaurants</h2>";
+    // retrieve restaurant array from local storage
     var randRestArr = JSON.parse(localStorage.getItem("randRestArr"));
     var maxDisplay = 5;
     if(randRestArr.length<maxDisplay) {
@@ -94,7 +90,6 @@ function getRandomRest(locationId) {
         // retrieve restaurant data
         var restName = randRestArr[randIndex].name;
         var displayedId = 'displayed' + i;
-        console.log(displayedId);
 
         var restSnippet = $("<p>").attr("id", displayedId)
             .addClass("displayed py-2 px-4 border-b-2 border-green-800")
@@ -107,17 +102,14 @@ function getRandomRest(locationId) {
 
     localStorage.setItem("displayedArr", JSON.stringify(displayedArr));
 
+    // display first result
     displayRestCard("randRestArr", randIndexArr[0]);
 
+    // jquery event listener for restaurant list
     $("#restList .displayed").click(function() {
-        console.log("Restaurant clicked");
         var displayNext = $(this).attr('id');
-        console.log(displayNext);
-        console.log(displayedArr);
         for (var i=0; i<displayedArr.length; i++) {
             if (displayedArr[i].displayedId === displayNext) {
-                console.log("success");
-                console.log(displayedArr[i].randIndex);
                 displayRestCard("randRestArr", displayedArr[i].randIndex);
             }
         }
@@ -128,15 +120,11 @@ function getRandomRest(locationId) {
 
 // function to display restaurant details in page's hero section
 var displayRestCard = function(arrayName, index) {
-    
-    console.log("displayRestCard()");
-    console.log(index);
     indexDisplayed = index;
 
     // choose a restaurant
     var restArr = JSON.parse(localStorage.getItem(arrayName));
     var restObj = restArr[index];
-    console.log(restObj);
 
     // assign restaurant details to local variables
     var imageURL = 'http://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
@@ -166,28 +154,17 @@ var displayRestCard = function(arrayName, index) {
 
 // add currently displayed restaurant to local storage favorites array
 var addFavorite = function() {
-    console.log("Add Favorite");
     var randRestArr = JSON.parse(localStorage.getItem("randRestArr"));
     var restObj = randRestArr[indexDisplayed];
-    
-    console.log("restObj from addFavorite");
-    console.log(restObj);
-    restObj.displayedId = "displayed" + favIndex;
-    console.log(restObj);
     var favRestArr;
 
     if(JSON.stringify(localStorage.favRestArr)){
         favRestArr = JSON.parse(localStorage.favRestArr);
-        console.log("favorites array exists");
-        console.log(favIndex);
     }
     else{ 
-        console.log("does not exist");
         favRestArr = [];
     }
-    console.log(favRestArr);
     favRestArr.push(restObj);
-    console.log(favRestArr);
 
     localStorage.setItem("favRestArr", JSON.stringify(favRestArr));
 
@@ -195,10 +172,9 @@ var addFavorite = function() {
 
 // display favorites 
 var displayFavorites = function() {
-    console.log("clicked favorites");
 
     // change heading to favorites
-    restList.innerHTML = "<div class='px-5 py-8 border-2 border-green-800'><h2 class='font-bold'>Favorite Restaurants</h2>";
+    restList.innerHTML = "<div class='card my-auto mx-auto text-2xl flex-col border-4 border-green-800 order-2'><h2 class='font-bold'>Favorite Restaurants</h2>";
     // retrieve favorites from local storage
     var favRestArr = JSON.parse(localStorage.getItem("favRestArr"));
     
@@ -207,7 +183,7 @@ var displayFavorites = function() {
         // retrieve restaurant data
         var restName = favRestArr[i].name;
         var displayedId = 'displayed' + i;
-        console.log(displayedId);
+        favRestArr[i].displayedId = displayedId;
         
         var restSnippet = $("<p>").attr("id", displayedId)
             .addClass("displayed py-2 px-4 border-b-2 border-green-800")
@@ -215,15 +191,11 @@ var displayFavorites = function() {
         $("#restList").append(restSnippet);
     }
 
+    // jquery event listener for favorites list
     $("#restList .displayed").click(function() {
-        console.log("Restaurant clicked");
         var displayNext = $(this).attr('id');
-        console.log(displayNext);
-        console.log(favRestArr);
         for (var i=0; i<favRestArr.length; i++) {
             if (favRestArr[i].displayedId === displayNext) {
-                console.log("success");
-                console.log(favRestArr[i]);
                 displayRestCard("favRestArr", i);
             }
         }
@@ -285,15 +257,19 @@ var cityArr = [
 ]
   
 // load cities on page load
+
 window.addEventListener("load", () => {
     for(var i=0; i<cityArr.length; i++) {
         var cityOption = document.createElement("option");
         cityOption.textContent = cityArr[i].cityText;
         citySelect.appendChild(cityOption);
   }
+  // call getRandomRest and use Hartford location id as default for beta release
   getRandomRest(33804);
 });
 
-
+// event listener for Find My Food button
 searchBtn.addEventListener('click', getLocationId);
+
+// event listener for favorites button
 favoriteBtn.addEventListener('click',displayFavorites);

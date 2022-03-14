@@ -16,18 +16,18 @@
 
 #ukraineTop {
   background-color: rgb(61, 61, 231);
-  padding: 20px;
+  padding: 16px;
   color: white;
 }
 
 #ukraineTop h1 {
-  font-size: 48px;
+  font-size: 36px;
   font-weight:400;
 }
 
 #ukraineBottom {
   background-color: yellow;
-  padding: 44px 20px;
+  padding: 24px 20px;
 }
 
 #ukraineBottom a {
